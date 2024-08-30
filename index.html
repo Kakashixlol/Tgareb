@@ -142,8 +142,8 @@
             <ul id="titlesList" class="list-numbered">
                 <!-- سيتم ملء الألقاب هنا بواسطة Firebase -->
             </ul>
-            <button class="btn btn-success mt-4" onclick="manageTitle('add')">إضافة لقب جديد</button>
-            <button class="btn btn-danger mt-4" onclick="manageTitle('remove')">مسح لقب</button>
+            <button class="btn btn-custom" onclick="manageTitle('add')">إضافة لقب جديد</button>
+                <button class="btn btn-custom" onclick="manageTitle('remove')">حذف لقب</button>
         </div>
     </section>
 
@@ -154,7 +154,7 @@
             <ul id="starsList" class="list-numbered">
                 <!-- سيتم ملء نجوم الأسبوع هنا بواسطة Firebase -->
             </ul>
-            <button class="btn btn-warning mt-4" onclick="manageStar()">تغيير النجم</button>
+             <button class="btn btn-custom" onclick="manageStar()">تغيير نجم الأسبوع</button>
         </div>
     </section>
 
@@ -192,63 +192,94 @@
     <!-- ربط JavaScript و Firebase -->
     <script>
         // تهيئة Firebase
-        var firebaseConfig = {
+       var firebaseConfig = {
             apiKey: "AIzaSyDh4yD---YourAPIKeyHere",
             authDomain: "forland-f4965.firebaseapp.com",
             databaseURL: "https://forland-f4965-default-rtdb.firebaseio.com",
             projectId: "forland-f4965",
             storageBucket: "forland-f4965.appspot.com",
-            messagingSenderId: "539718454008",
-            appId: "1:539718454008:web:ec8f73bfb1ff8a31cecc42",
-            measurementId: "G-LZC51C6F56"
+            messagingSenderId: "376812143648",
+            appId: "1:376812143648:web:1f83efdd03e289e27897a3",
+            measurementId: "G-JM1PSBVGJX"
         };
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-        var database = firebase.database();
 
-        // وظائف إدارة Firebase
+        const database = firebase.database();
+        const password = "Anime2024"; // كلمة مرور لحماية العمليات الخاصة بالألقاب والنجوم
+
+        // دالة التعامل مع الألقاب (إضافة/مسح)
         function manageTitle(action) {
-            var title = prompt("أدخل اللقب:");
-            if (title) {
+            const enteredPassword = prompt("أدخل كلمة المرور:");
+            if (enteredPassword === password) {
                 if (action === 'add') {
-                    database.ref('titles').push({ name: title });
+                    const title = prompt("ادخل اللقب الجديد:");
+                    if (title) {
+                        const titleRef = database.ref('titles').push();
+                        titleRef.set({ title });
+                    }
                 } else if (action === 'remove') {
-                    // حذف اللقب
+                    const titleNumber = prompt("ادخل رقم اللقب للمسح:");
+                    database.ref('titles').once('value', function(snapshot) {
+                        const titles = snapshot.val();
+                        const titleKey = Object.keys(titles)[titleNumber - 1];
+                        if (titleKey) {
+                            database.ref('titles/' + titleKey).remove();
+                        }
+                    });
                 }
+            } else {
+                alert("كلمة المرور غير صحيحة.");
             }
         }
 
+        // دالة التعامل مع النجوم
         function manageStar() {
-            var star = prompt("أدخل اسم النجم:");
-            if (star) {
-                database.ref('stars').push({ name: star });
+            const enteredPassword = prompt("أدخل كلمة المرور:");
+            if (enteredPassword === password) {
+                const newStar = prompt("ادخل لقب نجم الأسبوع الجديد:");
+                if (newStar) {
+                    database.ref('stars').remove(); // إزالة النجم القديم
+                    const starRef = database.ref('stars').push();
+                    starRef.set({ star: newStar }); // إضافة النجم الجديد
+                }
+            } else {
+                alert("كلمة المرور غير صحيحة.");
             }
         }
 
-        // تحميل البيانات من Firebase
-        database.ref('titles').on('value', function(snapshot) {
-            var list = document.getElementById('titlesList');
-            list.innerHTML = '';
-            snapshot.forEach(function(childSnapshot) {
-                var item = document.createElement('li');
-                item.textContent = childSnapshot.val().name;
-                list.appendChild(item);
+        // تحميل الألقاب من Firebase
+        database.ref('titles').on('value', (snapshot) => {
+            const titlesList = document.getElementById('titlesList');
+            titlesList.innerHTML = ''; // تنظيف القائمة قبل إعادة التحديث
+            let counter = 1;
+            snapshot.forEach((childSnapshot) => {
+                const title = childSnapshot.val().title;
+                const li = document.createElement('li');
+                li.textContent = `${counter}. ${title}`;
+                titlesList.appendChild(li);
+                counter++;
             });
         });
 
-        database.ref('stars').on('value', function(snapshot) {
-            var list = document.getElementById('starsList');
-            list.innerHTML = '';
-            snapshot.forEach(function(childSnapshot) {
-                var item = document.createElement('li');
-                item.textContent = childSnapshot.val().name;
-                list.appendChild(item);
+        // تحميل نجوم الأسبوع من Firebase
+        database.ref('stars').on('value', (snapshot) => {
+            const starsList = document.getElementById('starsList');
+            starsList.innerHTML = ''; // تنظيف القائمة قبل إعادة التحديث
+            let counter = 1;
+            snapshot.forEach((childSnapshot) => {
+                const star = childSnapshot.val().star;
+                const li = document.createElement('li');
+                li.textContent = `${counter}. ${star}`;
+                starsList.appendChild(li);
+                counter++;
             });
         });
     </script>
-    <!-- ربط Bootstrap عبر CDN -->
+
+    <!-- روابط CDN لـ Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

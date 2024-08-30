@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منظمة محبي الأنمي</title>
     <!-- ربط Bootstrap عبر CDN -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- ربط Font Awesome للأيقونات -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         body {
@@ -15,6 +14,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding-bottom: 60px;
+            transition: background-color 0.3s ease-in-out;
         }
         .navbar, .footer {
             background-color: #111;
@@ -22,14 +22,11 @@
         .card {
             background-color: #252525;
             border: 1px solid #333;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .card-title, .footer {
-            color: #f8f9fa;
+            transform: translateY(-10px);
+            background-color: #333;
         }
         .footer {
             padding: 15px;
@@ -38,72 +35,24 @@
             width: 100%;
             text-align: center;
         }
-        .background-1, .background-2, .background-3, .background-4, .background-5, .background-6 {
-            background-size: cover;
-            background-position: center;
-            color: #ffffff;
-            padding: 60px 0;
-            position: relative;
-        }
-        .background-1::before, .background-2::before, .background-3::before, 
-        .background-4::before, .background-5::before, .background-6::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-        }
-        .background-1 { background-image: url('https://images8.alphacoders.com/430/430276.jpg'); }
-        .background-2 { background-image: url('https://images7.alphacoders.com/422/422664.jpg'); }
-        .background-3 { background-image: url('https://images5.alphacoders.com/396/396338.jpg'); }
-        .background-4 { background-image: url('https://images6.alphacoders.com/428/428626.jpg'); }
-        .background-5 { background-image: url('https://images6.alphacoders.com/102/1026281.jpg'); }
-        .background-6 { background-image: url('https://images8.alphacoders.com/413/413072.jpg'); }
         .btn-custom {
             background-color: #007bff;
             color: #fff;
             border: none;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
         .btn-custom:hover {
             background-color: #0056b3;
-            transform: scale(1.05);
         }
         .list-numbered {
             counter-reset: item;
             padding-left: 0;
             list-style: none;
         }
-        .list-numbered li {
-            counter-increment: item;
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 30px;
-        }
         .list-numbered li::before {
-            content: counter(item);
-            background-color: #007bff;
-            color: white;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 50%;
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .section-content {
-            position: relative;
-            z-index: 1;
-        }
-        .fade-in {
-            opacity: 0;
-            transition: opacity 0.5s ease-in-out;
-        }
-        .fade-in.visible {
-            opacity: 1;
+            content: counters(item, ".") ". ";
+            counter-increment: item;
+            color: #f39c12;
         }
     </style>
 </head>
@@ -112,7 +61,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-tv me-2"></i>منظمة محبي الأنمي</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -129,107 +78,111 @@
     </nav>
 
     <!-- صفحة الترحيب -->
-    <section id="welcome" class="background-1 text-center">
-        <div class="container section-content">
-            <h1 class="display-4 mb-4 fade-in">مرحباً بكم في منظمة محبي الأنمي!</h1>
-            <p class="lead fade-in">نحن هنا لمشاركة حبنا للأنمي مع الجميع.</p>
-            <a href="#rules" class="btn btn-custom btn-lg mt-3 fade-in">تعرف على المزيد</a>
+    <section id="welcome" class="container-fluid background-1 text-center">
+        <div class="container">
+            <h1 class="display-4">مرحباً بكم في منظمة محبي الأنمي!</h1>
+            <p>نحن هنا لمشاركة حبنا للأنمي مع الجميع.</p>
+            <button class="btn btn-warning" onclick="copyText()">استمارة الدخول</button>
+            <button class="btn btn-danger" onclick="window.location.href='https://example.com'">القوانين</button>
         </div>
     </section>
 
-    <!-- صفحة القوانين والمميزات -->
-    <section id="rules" class="background-2 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">القوانين والمميزات</h2>
-            <div class="row">
-                <div class="col-md-6 fade-in">
-                    <h3><i class="fas fa-gavel me-2"></i>القوانين</h3>
-                    <ul class="list-numbered">
-                        <li>احترام الجميع والتعاون.</li>
-                        <li>الالتزام بالموضوعات المتعلقة بالأنمي.</li>
-                        <li>عدم نشر المحتوى غير اللائق.</li>
-                    </ul>
-                </div>
-                <div class="col-md-6 fade-in">
-                    <h3><i class="fas fa-gift me-2"></i>المميزات</h3>
-                    <ul class="list-numbered">
-                        <li>مناقشات أسبوعية حول أحدث الأنميات.</li>
-                        <li>مسابقات وجوائز شهرية.</li>
-                        <li>ورش عمل لتعلم الرسم بأسلوب الأنمي.</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- صفحات أخرى... -->
+      <section id="rules" class="container-fluid background-2 text-center">
+        <div class="container">
+            <h2>القوانين والمميزات</h2>
+            <ul class="list-numbered">
+                <li>احترام الجميع والتعاون.</li>
+                <li>المشاركة في الأنشطة المختلفة.</li>
+                <li>الالتزام بالقوانين وتوجيهات المشرفين.</li>
+            </ul>
         </div>
     </section>
 
     <!-- صفحة المشرفين -->
-    <section id="admins" class="background-3 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">المشرفين والمسؤولين</h2>
+    <section id="admins" class="container-fluid background-3 text-center">
+        <div class="container">
+            <h2>المشرفين والمسؤولين</h2>
+            <!-- نموذج للبطاقات -->
             <div class="row">
-                <div class="col-md-4 mb-4 fade-in">
+                <div class="col-md-4">
                     <div class="card">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="المسؤول">
+                        <img src="https://images8.alphacoders.com/430/430276.jpg" class="card-img-top" alt="المسؤول">
                         <div class="card-body">
                             <h5 class="card-title">اللقب: القائد</h5>
                             <p class="card-text">الرتبة: مدير</p>
                             <p class="card-text">الوظيفة: إدارة الفريق</p>
-                            <a href="#" class="btn btn-custom"><i class="fab fa-whatsapp me-2"></i>تواصل</a>
+                            <a href="https://wa.me/000000000" class="btn btn-custom">تواصل</a>
                         </div>
                     </div>
                 </div>
-                <!-- يمكن إضافة المزيد من بطاقات المشرفين هنا -->
+                <!-- أضف المزيد من البطاقات هنا -->
             </div>
         </div>
     </section>
 
     <!-- صفحة الألقاب -->
-    <section id="titles" class="background-4 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">الألقاب الخاصة بالأعضاء</h2>
-            <ul id="titlesList" class="list-numbered fade-in">
-                <!-- سيتم ملء الألقاب هنا بواسطة JavaScript -->
-            </ul>
-            <div class="text-center mt-4 fade-in">
-                <button class="btn btn-custom me-2" onclick="manageTitle('add')"><i class="fas fa-plus me-2"></i>إضافة لقب جديد</button>
-                <button class="btn btn-custom" onclick="manageTitle('remove')"><i class="fas fa-minus me-2"></i>حذف لقب</button>
+    <section id="titles" class="container-fluid background-4 text-center">
+         <!-- الالقاب -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">القاب النقابة</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group1.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">الالقاب المستخدمة</h5>
+                            <a href="#" class="btn btn-custom">مشاهدة</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- صفحة نجوم الأسبوع -->
-    <section id="stars" class="background-5 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">نجوم الأسبوع</h2>
-            <ul id="starsList" class="list-numbered fade-in">
-                <!-- سيتم ملء نجوم الأسبوع هنا بواسطة JavaScript -->
-            </ul>
-            <div class="text-center mt-4 fade-in">
-                <button class="btn btn-custom" onclick="manageStar()"><i class="fas fa-star me-2"></i>تغيير نجم الأسبوع</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- صفحة الروابط -->
-    <section id="links" class="background-6 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">روابط المجموعات</h2>
-            <div class="row">
-                <div class="col-md-6 mb-4 fade-in">
-                    <div class="card">
-                        <img src="/api/placeholder/400/200" class="card-img-top" alt="مجموعة النقاشات">
+    <section id="stars" class="container-fluid background-5 text-center">
+         <!-- النجوم -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">نجوم الاسبوع</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group1.jpg" class="card-img-top" alt="لاو">
                         <div class="card-body">
-                            <h5 class="card-title">مجموعة النقاشات</h5>
-                            <a href="#" class="btn btn-custom"><i class="fab fa-telegram me-2"></i>انضم للمجموعة</a>
+                            <h5 class="card-title">نجم التفاعل</h5>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group2.jpg" class="card-img-top" alt="ماي">
+                        <div class="card-body">
+                             <h5 class="card-title">نجم الفعاليات</h5>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-4 fade-in">
-                    <div class="card">
-                        <img src="/api/placeholder/400/200" class="card-img-top" alt="مجموعة التحديثات">
+            </div>
+        </div>
+    </section>
+    <!-- صفحة الروابط -->
+    <section id="links" class="container-fluid background-6 text-center">
+         <!-- روابط المجموعات -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">روابط المجموعات</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group1.jpg" class="card-img-top" alt="مجموعة 1">
+                        <div class="card-body">
+                            <h5 class="card-title">مجموعة النقاشات</h5>
+                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="group2.jpg" class="card-img-top" alt="مجموعة 2">
                         <div class="card-body">
                             <h5 class="card-title">مجموعة التحديثات</h5>
-                            <a href="#" class="btn btn-custom"><i class="fab fa-telegram me-2"></i>انضم للمجموعة</a>
+                            <a href="#" class="btn btn-custom">انضم للمجموعة</a>
                         </div>
                     </div>
                 </div>
@@ -239,160 +192,23 @@
 
     <!-- شريط الحقوق -->
     <div class="footer">
-        حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">ＫΞＦＯ</a>
+        حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">Omar</a>
     </div>
 
-    <!-- ربط Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
-    <!-- ربط Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-        // تهيئة Firebase (استبدل بمعلومات مشروعك الخاص)
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID",
-            measurementId: "YOUR_MEASUREMENT_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-
-        const database = firebase.database();
-
-        // دالة للتحقق من صحة المدخلات
-        function validateInput(input) {
-            return input && input.trim().length > 0 && input.trim().length <= 50;
-        }
-
-        // دالة للمصادقة (يجب تنفيذها بشكل صحيح في بيئة الإنتاج)
-        function authenticateUser() {
-            return new Promise((resolve) => {
-                // هنا يجب تنفيذ عملية المصادقة الحقيقية
-                const password = prompt("أدخل كلمة المرور:");
-                if (password === "Anime2024") {
-                    resolve({ uid: "admin" });
-                } else {
-                    resolve(null);
-                }
+    <!-- ربط JavaScript -->
+    <script>
+        function copyText() {
+            var hiddenText = "هذا هو النص المخفي الذي سيتم نسخه تلقائياً"; // مثال للنص المخفي
+            navigator.clipboard.writeText(hiddenText).then(function() {
+                alert("تم نسخ النص بنجاح!");
+            }, function() {
+                alert("فشل في نسخ النص.");
             });
         }
-
-        // دالة للتعامل مع الألقاب (إضافة/حذف)
-        async function manageTitle(action) {
-            try {
-                const user = await authenticateUser();
-                if (!user) {
-                    alert("غير مصرح لك بإجراء هذه العملية.");
-                    return;
-                }
-
-                if (action === 'add') {
-                    const title = prompt("أدخل اللقب الجديد:");
-                    if (validateInput(title)) {
-                        await database.ref('titles').push().set({ title, createdBy: user.uid });
-                        alert("تمت إضافة اللقب بنجاح.");
-                    } else {
-                        alert("اللقب غير صالح. يجب أن يكون بين 1 و 50 حرفًا.");
-                    }
-                } else if (action === 'remove') {
-                    const titleSnapshot = await database.ref('titles').once('value');
-                    const titles = titleSnapshot.val();
-                    const titlesList = Object.entries(titles).map(([key, value]) => `${key}: ${value.title}`);
-                    const titleKey = prompt(`أدخل معرف اللقب للحذف:\n${titlesList.join('\n')}`);
-                    
-                    if (titles[titleKey]) {
-                        await database.ref('titles/' + titleKey).remove();
-                        alert("تم حذف اللقب بنجاح.");
-                    } else {
-                        alert("معرف اللقب غير صالح.");
-                    }
-                }
-            } catch (error) {
-                console.error("حدث خطأ:", error);
-                alert("حدث خطأ أثناء تنفيذ العملية.");
-            }
-        }
-
-        // دالة للتعامل مع نجوم الأسبوع
-        async function manageStar() {
-            try {
-                const user = await authenticateUser();
-                if (!user) {
-                    alert("غير مصرح لك بإجراء هذه العملية.");
-                    return;
-                }
-
-                const newStar = prompt("أدخل اسم نجم الأسبوع الجديد:");
-                if (validateInput(newStar)) {
-                    await database.ref('stars').push().set({ 
-                        star: newStar, 
-                        createdBy: user.uid, 
-                        createdAt: firebase.database.ServerValue.TIMESTAMP 
-                    });
-                    alert("تم إضافة نجم الأسبوع بنجاح.");
-                } else {
-                    alert("الاسم غير صالح. يجب أن يكون بين 1 و 50 حرفًا.");
-                }
-            } catch (error) {
-                console.error("حدث خطأ:", error);
-                alert("حدث خطأ أثناء تنفيذ العملية.");
-            }
-        }
-
-        // تحميل الألقاب من Firebase
-        database.ref('titles').on('value', (snapshot) => {
-            const titlesList = document.getElementById('titlesList');
-            titlesList.innerHTML = '';
-            snapshot.forEach((childSnapshot) => {
-                const title = childSnapshot.val().title;
-                const li = document.createElement('li');
-                li.textContent = title;
-                titlesList.appendChild(li);
-            });
-        });
-
-        // تحميل نجوم الأسبوع من Firebase
-        database.ref('stars').orderByChild('createdAt').limitToLast(5).on('value', (snapshot) => {
-            const starsList = document.getElementById('starsList');
-            starsList.innerHTML = '';
-            const stars = [];
-            snapshot.forEach((childSnapshot) => {
-                stars.unshift({ key: childSnapshot.key, ...childSnapshot.val() });
-            });
-            stars.forEach((star, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${star.star} (أسبوع ${index + 1})`;
-                starsList.appendChild(li);
-            });
-        });
-
-        // تأثير الظهور التدريجي للعناصر
-        function handleIntersection(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }
-
-        const observer = new IntersectionObserver(handleIntersection, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
     </script>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

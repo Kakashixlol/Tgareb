@@ -185,29 +185,13 @@
 
     <!-- صفحة الألقاب -->
     <section id="titles" class="background-4 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">الألقاب الخاصة بالأعضاء</h2>
-            <ul id="titlesList" class="list-numbered fade-in">
-                <!-- سيتم ملء الألقاب هنا بواسطة JavaScript -->
-            </ul>
-            <div class="text-center mt-4 fade-in">
-                <button class="btn btn-custom me-2" onclick="manageTitle('add')"><i class="fas fa-plus me-2"></i>إضافة لقب جديد</button>
-                <button class="btn btn-custom" onclick="manageTitle('remove')"><i class="fas fa-minus me-2"></i>حذف لقب</button>
-            </div>
-        </div>
+
+        
     </section>
 
     <!-- صفحة نجوم الأسبوع -->
     <section id="stars" class="background-5 py-5">
-        <div class="container section-content">
-            <h2 class="text-center mb-4 fade-in">نجوم الأسبوع</h2>
-            <ul id="starsList" class="list-numbered fade-in">
-                <!-- سيتم ملء نجوم الأسبوع هنا بواسطة JavaScript -->
-            </ul>
-            <div class="text-center mt-4 fade-in">
-                <button class="btn btn-custom" onclick="manageStar()"><i class="fas fa-star me-2"></i>تغيير نجم الأسبوع</button>
-            </div>
-        </div>
+       
     </section>
 
     <!-- صفحة الروابط -->
@@ -242,157 +226,7 @@
         حقوق الموقع محفوظة &copy; 2024 <a href="https://github.com/omar" target="_blank">ＫΞＦＯ</a>
     </div>
 
-    <!-- ربط Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
-
     <!-- ربط Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-        // تهيئة Firebase (استبدل بمعلومات مشروعك الخاص)
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID",
-            measurementId: "YOUR_MEASUREMENT_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-        firebase.analytics();
-
-        const database = firebase.database();
-
-        // دالة للتحقق من صحة المدخلات
-        function validateInput(input) {
-            return input && input.trim().length > 0 && input.trim().length <= 50;
-        }
-
-        // دالة للمصادقة (يجب تنفيذها بشكل صحيح في بيئة الإنتاج)
-        function authenticateUser() {
-            return new Promise((resolve) => {
-                // هنا يجب تنفيذ عملية المصادقة الحقيقية
-                const password = prompt("أدخل كلمة المرور:");
-                if (password === "Anime2024") {
-                    resolve({ uid: "admin" });
-                } else {
-                    resolve(null);
-                }
-            });
-        }
-
-        // دالة للتعامل مع الألقاب (إضافة/حذف)
-        async function manageTitle(action) {
-            try {
-                const user = await authenticateUser();
-                if (!user) {
-                    alert("غير مصرح لك بإجراء هذه العملية.");
-                    return;
-                }
-
-                if (action === 'add') {
-                    const title = prompt("أدخل اللقب الجديد:");
-                    if (validateInput(title)) {
-                        await database.ref('titles').push().set({ title, createdBy: user.uid });
-                        alert("تمت إضافة اللقب بنجاح.");
-                    } else {
-                        alert("اللقب غير صالح. يجب أن يكون بين 1 و 50 حرفًا.");
-                    }
-                } else if (action === 'remove') {
-                    const titleSnapshot = await database.ref('titles').once('value');
-                    const titles = titleSnapshot.val();
-                    const titlesList = Object.entries(titles).map(([key, value]) => `${key}: ${value.title}`);
-                    const titleKey = prompt(`أدخل معرف اللقب للحذف:\n${titlesList.join('\n')}`);
-                    
-                    if (titles[titleKey]) {
-                        await database.ref('titles/' + titleKey).remove();
-                        alert("تم حذف اللقب بنجاح.");
-                    } else {
-                        alert("معرف اللقب غير صالح.");
-                    }
-                }
-            } catch (error) {
-                console.error("حدث خطأ:", error);
-                alert("حدث خطأ أثناء تنفيذ العملية.");
-            }
-        }
-
-        // دالة للتعامل مع نجوم الأسبوع
-        async function manageStar() {
-            try {
-                const user = await authenticateUser();
-                if (!user) {
-                    alert("غير مصرح لك بإجراء هذه العملية.");
-                    return;
-                }
-
-                const newStar = prompt("أدخل اسم نجم الأسبوع الجديد:");
-                if (validateInput(newStar)) {
-                    await database.ref('stars').push().set({ 
-                        star: newStar, 
-                        createdBy: user.uid, 
-                        createdAt: firebase.database.ServerValue.TIMESTAMP 
-                    });
-                    alert("تم إضافة نجم الأسبوع بنجاح.");
-                } else {
-                    alert("الاسم غير صالح. يجب أن يكون بين 1 و 50 حرفًا.");
-                }
-            } catch (error) {
-                console.error("حدث خطأ:", error);
-                alert("حدث خطأ أثناء تنفيذ العملية.");
-            }
-        }
-
-        // تحميل الألقاب من Firebase
-        database.ref('titles').on('value', (snapshot) => {
-            const titlesList = document.getElementById('titlesList');
-            titlesList.innerHTML = '';
-            snapshot.forEach((childSnapshot) => {
-                const title = childSnapshot.val().title;
-                const li = document.createElement('li');
-                li.textContent = title;
-                titlesList.appendChild(li);
-            });
-        });
-
-        // تحميل نجوم الأسبوع من Firebase
-        database.ref('stars').orderByChild('createdAt').limitToLast(5).on('value', (snapshot) => {
-            const starsList = document.getElementById('starsList');
-            starsList.innerHTML = '';
-            const stars = [];
-            snapshot.forEach((childSnapshot) => {
-                stars.unshift({ key: childSnapshot.key, ...childSnapshot.val() });
-            });
-            stars.forEach((star, index) => {
-                const li = document.createElement('li');
-                li.textContent = `${star.star} (أسبوع ${index + 1})`;
-                starsList.appendChild(li);
-            });
-        });
-
-        // تأثير الظهور التدريجي للعناصر
-        function handleIntersection(entries, observer) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }
-
-        const observer = new IntersectionObserver(handleIntersection, {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        });
-
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>

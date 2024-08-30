@@ -19,6 +19,30 @@
         .navbar, .footer {
             background-color: #111;
         }
+        .background-1 {
+            background: url('https://example.com/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-2 {
+            background: url('https://example.com/background2.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-3 {
+            background: url('https://example.com/background3.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-4 {
+            background: url('https://example.com/background4.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-5 {
+            background: url('https://example.com/background5.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-6 {
+            background: url('https://example.com/background6.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
         .card {
             background-color: #252525;
             border: 1px solid #333;
@@ -88,7 +112,7 @@
     </section>
 
     <!-- صفحات أخرى... -->
-      <section id="rules" class="container-fluid background-2 text-center">
+    <section id="rules" class="container-fluid background-2 text-center">
         <div class="container">
             <h2>القوانين والمميزات</h2>
             <ul class="list-numbered">
@@ -116,12 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- أضف المزيد من البطاقات هنا -->
-            </div>
-        </div>
-    </section>
-
-    <!-- صفحة الألقاب -->
+                  <!-- صفحة الألقاب -->
     <section id="titles" class="container-fluid background-4 text-center">
          <!-- الالقاب -->
         <div class="card mb-4">
@@ -189,6 +208,11 @@
             </div>
         </div>
     </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- صفحات أخرى (الألقاب، النجوم، الروابط) تبقى كما هي، مع إضافة الخلفيات الجديدة المناسبة. -->
 
     <!-- شريط الحقوق -->
     <div class="footer">
@@ -198,7 +222,7 @@
     <!-- ربط JavaScript -->
     <script>
         function copyText() {
-            var hiddenText = "هذا هو النص المخفي الذي سيتم نسخه تلقائياً"; // مثال للنص المخفي
+            var hiddenText = "طلاب ٣ ثانوي 📢\n\nمتنساش امتحانك النهارده على أول درس في الباب الأول (باب العناصر الانتقالية).\n\nامتحانك من الساعة ٧م للساعة ١٠م.\n\nالامتحان مدته ٣٠ دقيقة فقط.\n\nراجعوا كويس و ربنا يوفقكم ان شاء الله";
             navigator.clipboard.writeText(hiddenText).then(function() {
                 alert("تم نسخ النص بنجاح!");
             }, function() {

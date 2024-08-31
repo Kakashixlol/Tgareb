@@ -1,47 +1,52 @@
+<!--  كلام من مطور الموقع:- غير مسامح في اي سرقة حتى لو كانت حرف من الكود مع انه بسيط بس تعالا استأذن الاول -->
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALHALLA</title>
-    <!-- روابط CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-        /* الأسلوب العام للصفحة */
         body {
-            background-color: #121212;
-            color: #fff;
+            background-color: #1a1a1a;
+            color: white;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding-bottom: 60px;
             transition: background-color 0.3s ease-in-out;
         }
         .navbar, .footer {
-            background-color: #000;
-            border-bottom: 1px solid #333;
+            background-color: #111;
         }
         .background-1 {
             background: url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center fixed;
             background-size: cover;
-            padding: 100px 0;
         }
-        .background-2, .background-3, .background-4, .background-5, .background-6 {
+        .background-2 {
+            background: url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-3 {
             background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
             background-size: cover;
-            padding: 60px 0;
         }
-        .section-title {
-            text-shadow: 1px 1px 5px #000;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
+        .background-4 {
+            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-5 {
+            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .background-6 {
+            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
         .card {
             background-color: #252525;
-            border: 1px solid #444;
+            border: 1px solid #333;
             transition: transform 0.3s ease, background-color 0.3s ease;
-            border-radius: 8px;
-            overflow: hidden;
         }
         .card:hover {
             transform: translateY(-10px);
@@ -53,19 +58,15 @@
             bottom: 0;
             width: 100%;
             text-align: center;
-            border-top: 1px solid #444;
         }
         .btn-custom {
             background-color: #007bff;
             color: #fff;
             border: none;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            padding: 10px 20px;
-            border-radius: 20px;
+            transition: background-color 0.3s ease;
         }
         .btn-custom:hover {
             background-color: #0056b3;
-            transform: scale(1.1);
         }
         .list-numbered {
             counter-reset: item;
@@ -76,15 +77,10 @@
             content: counters(item, ".") ". ";
             counter-increment: item;
             color: #f39c12;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
         }
     </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-tv me-2"></i>VALHALLA</a>
@@ -104,22 +100,20 @@
         </div>
     </nav>
 
-    <!-- قسم الترحيب -->
-    <section id="welcome" class="container-fluid background-1 text-center text-white d-flex flex-column justify-content-center align-items-center">
+    <section id="welcome" class="container-fluid background-1 text-center">
         <div class="container">
             <h1 class="display-4">مرحباً بكم في نقابة ڤالهالا</h1>
             <p>يجمعنا حب الانمي من مختلف البلاد العربية.</p>
-            <button class="btn btn-warning mt-4" onclick="copyText()">استمارة الدخول</button>
-            <button class="btn btn-danger mt-4" onclick="window.location.href='https://docs.google.com/spreadsheets/d/17FhzaT3zl_Z3tdc01JI0O9rK71ow6Na6JZqjesrG4RY/edit?usp=drivesdk'">القوانين</button>
-            <button class="btn btn-warning mt-4" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DAXySifqzxTsGEl9EcKPB11pro7kxIiQSKavLlwGDkc/edit?usp=drivesdk'">البنك</button>
+            <button class="btn btn-warning" onclick="copyText()">استمارة الدخول</button>
+            <button class="btn btn-danger" onclick="window.location.href='https://docs.google.com/spreadsheets/d/17FhzaT3zl_Z3tdc01JI0O9rK71ow6Na6JZqjesrG4RY/edit?usp=drivesdk'">القوانين</button>
+            <button class="btn btn-warning" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DAXySifqzxTsGEl9EcKPB11pro7kxIiQSKavLlwGDkc/edit?usp=drivesdk'">البنك</button>
         </div>
     </section>
 
-    <!-- قسم القوانين والمميزات -->
     <section id="rules" class="container-fluid background-2 text-center">
         <div class="container">
-            <h2 class="section-title">المميزات</h2>
-            <ul class="list-numbered text-left">
+            <h2>المميزات</h2>
+            <ul class="list-numbered">
                 <li>بوت للترفيه.</li>
                 <li>بنك و متجر و جوائز.</li>
                 <li>احترام الجميع والتعاون.</li>
@@ -131,13 +125,11 @@
         </div>
     </section>
 
-    <!-- قسم المشرفين والمسؤولين -->
     <section id="admins" class="container-fluid background-3 text-center">
         <div class="container">
-            <h2 class="section-title">المشرفين والمسؤولين</h2>
+            <h2>المشرفين والمسؤولين</h2>
             <div class="row">
-                <!-- بطاقة المسؤول -->
-                <div class="col-md-4 mb-4">
+                <div class="col-md-4">
                     <div class="card">
                         <img src="https://graph.org/file/d0eed1b102e21b11ae6c0.jpg" class="card-img-top" alt="مسؤول">
                         <div class="card-body">
@@ -195,35 +187,27 @@
                         </div>
 </div>
                 </div>
-                <!-- بطاقات مسؤولين أخرى تكرار للبطاقة أعلاه -->
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم الألقاب -->
     <section id="titles" class="container-fluid background-4 text-center">
-        <div class="container">
-            <h2 class="section-title">القاب النقابة</h2>
-            <div class="card-deck">
-                <div class="card text-white bg-dark mb-3">
-                    <img src="https://graph.org/file/9b6f1726f0ad2a4ea0375.jpg" class="card-img-top" alt="لقب">
-                    <div class="card-body">
-                        <h5 class="card-title">***</h5>
-                        <p class="card-text">اللقب الخاص بأعلى النقاط.</p>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">القاب النقابة</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="https://graph.org/file/9b6f1726f0ad2a4eaaf6a.jpg" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">الالقاب المستخدمة</h5>
+                            <a href="####" class="btn btn-custom">مشاهدة</a>
+                        </div>
+                    </div>
                     </div>
                 </div>
-                <!-- بطاقات ألقاب أخرى -->
             </div>
         </div>
     </section>
-
-    <!-- قسم نجوم الأسبوع -->
+    
     <section id="stars" class="container-fluid background-5 text-center">
-        <div class="container">
-            <h2 class="section-title">نجوم الأسبوع</h2>
-            <div class="row">
-                <!-- بطاقات نجوم الأسبوع -->
-         <div class="card-body">
+        <div class="card mb-4">
+            <div class="card-body">
                 <h4 class="card-title">نجوم الاسبوع</h4>
                 <div class="card-deck">
                     <div class="card text-white bg-dark mb-3">
@@ -244,35 +228,52 @@
                         </div>
                     </div>
                 </div>
-            </div>   
-</div>
+            </div>
         </div>
     </section>
-
-    <!-- قسم روابط المجموعة -->
     <section id="links" class="container-fluid background-6 text-center">
-        <div class="container">
-            <h2 class="section-title">روابط المجموعة</h2>
-            <button class="btn btn-warning mt-4" onclick="window.location.href='https://chat.whatsapp.com/DhEB9ucTogR7iB3Uud7vsA'">الدخول للمجموعة</button>
-            <button class="btn btn-warning mt-4" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1cqtnzDeCAq9j-b0b6Vc0rsdNJ0eyLUwrbejoIvo9XNk/edit'">استمارة التقديم</button>
+        <div class="card mb-4">
+            <div class="card-body">
+                <h4 class="card-title">فروع ڤالهالا</h4>
+                <div class="card-deck">
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="https://graph.org/file/0d410582cc12a1a5c6065.jpg" class="card-img-top" alt="فرع 1">
+                        <div class="card-body">
+                            <h5 class="card-title">استقبال ڤالهالا</h5>
+                            <a href="https://chat.whatsapp.com/EEOgf9BlR8KLONY7jD8TT5" class="btn btn-custom">انضم للمجموعة</a>
+                        </div>
+                    </div>
+                    <div class="card text-white bg-dark mb-3">
+                        <img src="https://graph.org/file/0c6c099174e21983a996b.jpg" class="card-img-top" alt="فرع 2">
+                        <div class="card-body">
+                            <h5 class="card-title">ستيكرات ڤالهالا</h5>
+                            <a href="https://chat.whatsapp.com/HKH3H9vYltrEc7Amce07E8" class="btn btn-custom">انضم للمجموعة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+            </div>
+        </div>
+</section>
 
-    <!-- تذييل الصفحة -->
-    <footer class="footer">
-        <p>جميع الحقوق محفوظة &copy; 2024</p>
-    </footer>
-
-    <!-- روابط JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="footer">
+       جميع الحقوق محفوظة  &copy; 2024 <a href="https://wa.me/201033401721" target="_blank">ＫΞＦＯ ┇♞</a>
+    </div>
+    
     <script>
         function copyText() {
-            navigator.clipboard.writeText("https://docs.google.com/forms/d/1cqtnzDeCAq9j-b0b6Vc0rsdNJ0eyLUwrbejoIvo9XNk/edit").then(function() {
-                alert("تم نسخ الرابط بنجاح!");
+            var hiddenText = "*مرحبا بك في نقابة فالاهالا🔥*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*شرح للأستمارة*\n*اللقب:* ادخل اسم من شخصية انمي يكون لقبك داخل الجروب\n*الأنمي:* الأنمي يلي اخترت منه اللقب\n*من طرف:* من طرف مين دخلت الجروب او مين دخلك الجروب\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*❃ اللقب :『』➥*\n*❃ الانمي :『』➥*\n*❃ من طرف :『』➥*\n*❃ بنت او ولد :『』➥*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*✦ الرجاء إلحاق صورة للقب مع تعبئة الإستمارة*\n*✦ ممنوع لقب من انمي (هينتاي - ايتشي) او خارج نطاق الانمي*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n───── *..*\n*ادارة :*\n*『𝚅𝙰𝙻𝙷「🔥」𝙰𝙻𝙻𝙰』*";
+            navigator.clipboard.writeText(hiddenText).then(function() {
+                alert("تم نسخ النص بنجاح!");
+            }, function() {
+                alert("فشل في نسخ النص.");
             });
         }
     </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -7,84 +7,89 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
 
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-        }
+    body {
+        font-family: 'Tajawal', sans-serif;
+        background-color: #121212;
+        color: #ffffff;
+    }
 
-        .navbar {
-            background-color: rgba(18, 18, 18, 0.8);
-            backdrop-filter: blur(10px);
-        }
+    .navbar {
+        background-color: rgba(18, 18, 18, 0.8);
+        backdrop-filter: blur(10px);
+    }
 
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
+    .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+    }
 
-        .section {
-            padding: 100px 0;
-        }
+    .section {
+        padding: 100px 0;
+    }
 
-        .card {
-            background-color: #1e1e1e;
-            border: none;
-            border-radius: 15px;
-            overflow: hidden;
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        }
+    .card {
+        background-color: #1e1e1e;
+        border: none;
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-        .btn-custom {
-            background-color: #f39c12;
-            border: none;
-            color: #ffffff;
-            transition: background-color 0.3s ease-in-out;
-        }
+    .card h5,
+    .card h2 {
+        color: #f39c12;
+    }
 
-        .btn-custom:hover {
-            background-color: #e67e22;
-        }
+    .btn-custom {
+        background-color: #f39c12;
+        border: none;
+        color: #ffffff;
+        transition: background-color 0.3s ease-in-out;
+    }
 
-        .footer {
-            background-color: #1e1e1e;
-            color: #ffffff;
-            padding: 20px 0;
-        }
+    .btn-custom:hover {
+        background-color: #e67e22;
+    }
 
-        .list-numbered {
-            counter-reset: item;
-            padding-left: 0;
-            list-style: none;
-        }
+    .footer {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        padding: 20px 0;
+    }
 
-        .list-numbered li {
-            counter-increment: item;
-            margin-bottom: 10px;
-        }
+    .list-numbered {
+        counter-reset: item;
+        padding-left: 0;
+        list-style: none;
+    }
 
-        .list-numbered li::before {
-            content: counter(item) ".";
-            color: #f39c12;
-            font-weight: bold;
-            margin-right: 10px;
-        }
+    .list-numbered li {
+        counter-increment: item;
+        margin-bottom: 10px;
+    }
+
+    .list-numbered li::before {
+        content: counter(item) ".";
+        color: #f39c12;
+        font-weight: bold;
+        margin-right: 10px;
+    }
     </style>
 </head>
 <body>

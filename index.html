@@ -1,90 +1,97 @@
-<!--  كلام من مطور الموقع:- غير مسامح في اي سرقة حتى لو كانت حرف من الكود مع انه بسيط بس تعالا استأذن الاول -->
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VALHALLA</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
         body {
-            background-color: #1a1a1a;
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding-bottom: 60px;
-            transition: background-color 0.3s ease-in-out;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #121212;
+            color: #ffffff;
         }
-        .navbar, .footer {
-            background-color: #111;
+
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
         }
-        .background-1 {
-            background: url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center fixed;
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center;
             background-size: cover;
-        }
-        .background-2 {
-            background: url('https://graph.org/file/4b0f7056208c95f8ae63f.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .background-3 {
-            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .background-4 {
-            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .background-5 {
-            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .background-6 {
-            background: url('https://graph.org/file/4bca1206e95e795c45da7.jpg') no-repeat center center fixed;
-            background-size: cover;
-        }
-        .card {
-            background-color: #252525;
-            border: 1px solid #333;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            background-color: #333;
-        }
-        .footer {
-            padding: 15px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
             text-align: center;
         }
-        .btn-custom {
-            background-color: #007bff;
-            color: #fff;
+
+        .section {
+            padding: 100px 0;
+        }
+
+        .card {
+            background-color: #1e1e1e;
             border: none;
-            transition: background-color 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .btn-custom {
+            background-color: #f39c12;
+            border: none;
+            color: #ffffff;
+            transition: background-color 0.3s ease-in-out;
+        }
+
         .btn-custom:hover {
-            background-color: #0056b3;
+            background-color: #e67e22;
         }
+
+        .footer {
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 20px 0;
+        }
+
         .list-numbered {
             counter-reset: item;
             padding-left: 0;
             list-style: none;
         }
-        .list-numbered li::before {
-            content: counters(item, ".") ". ";
+
+        .list-numbered li {
             counter-increment: item;
+            margin-bottom: 10px;
+        }
+
+        .list-numbered li::before {
+            content: counter(item) ".";
             color: #f39c12;
+            font-weight: bold;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-tv me-2"></i>VALHALLA</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -100,20 +107,20 @@
         </div>
     </nav>
 
-    <section id="welcome" class="container-fluid background-1 text-center">
+    <section id="welcome" class="hero-section">
         <div class="container">
-            <h1 class="display-4">مرحباً بكم في نقابة ڤالهالا</h1>
-            <p>يجمعنا حب الانمي من مختلف البلاد العربية.</p>
-            <button class="btn btn-warning" onclick="copyText()">استمارة الدخول</button>
-            <button class="btn btn-danger" onclick="window.location.href='https://docs.google.com/spreadsheets/d/17FhzaT3zl_Z3tdc01JI0O9rK71ow6Na6JZqjesrG4RY/edit?usp=drivesdk'">القوانين</button>
-            <button class="btn btn-warning" onclick="window.location.href='https://docs.google.com/spreadsheets/d/1DAXySifqzxTsGEl9EcKPB11pro7kxIiQSKavLlwGDkc/edit?usp=drivesdk'">البنك</button>
+            <h1 class="display-3 mb-4">مرحباً بكم في نقابة ڤالهالا</h1>
+            <p class="lead mb-5">يجمعنا حب الانمي من مختلف البلاد العربية.</p>
+            <button class="btn btn-custom btn-lg me-3 mb-3" onclick="copyText()">استمارة الدخول</button>
+            <a href="https://docs.google.com/spreadsheets/d/17FhzaT3zl_Z3tdc01JI0O9rK71ow6Na6JZqjesrG4RY/edit?usp=drivesdk" class="btn btn-danger btn-lg me-3 mb-3">القوانين</a>
+            <a href="https://docs.google.com/spreadsheets/d/1DAXySifqzxTsGEl9EcKPB11pro7kxIiQSKavLlwGDkc/edit?usp=drivesdk" class="btn btn-custom btn-lg mb-3">البنك</a>
         </div>
     </section>
 
-    <section id="rules" class="container-fluid background-2 text-center">
+    <section id="rules" class="section bg-dark">
         <div class="container">
-            <h2>المميزات</h2>
-            <ul class="list-numbered">
+            <h2 class="text-center mb-5">المميزات</h2>
+            <ul class="list-numbered fs-5">
                 <li>بوت للترفيه.</li>
                 <li>بنك و متجر و جوائز.</li>
                 <li>احترام الجميع والتعاون.</li>
@@ -125,127 +132,150 @@
         </div>
     </section>
 
-    <section id="admins" class="container-fluid background-3 text-center">
+    <section id="admins" class="section">
         <div class="container">
-            <h2>المشرفين والمسؤولين</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card">
-                        <img src="https://graph.org/file/d0eed1b102e21b11ae6c0.jpg" class="card-img-top" alt="مسؤول">
+            <h2 class="text-center mb-5">المشرفين والمسؤولين</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/d0eed1b102e21b11ae6c0.jpg" class="card-img-top" alt="اوبيتو">
                         <div class="card-body">
                             <h5 class="card-title">اوبيتو</h5>
                             <p class="card-text">الرتبة: الامبراطور</p>
                             <a href="https://wa.me/201097823183" class="btn btn-custom">تواصل</a>
                         </div>
                     </div>
-<div class="card">
-                        <img src="https://graph.org/file/1dd7179cc509b64a9365e.jpg" class="card-img-top" alt="مسؤول">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/1dd7179cc509b64a9365e.jpg" class="card-img-top" alt="لوفي">
                         <div class="card-body">
                             <h5 class="card-title">لوفي</h5>
                             <p class="card-text">الرتبة: نائب الامبراطور</p>
                             <a href="https://wa.me/218911656035" class="btn btn-custom">تواصل</a>
                         </div>
                     </div>
-                        <div class="card">
-                        <img src="https://graph.org/file/1a1a65858e915e29001df.jpg" class="card-img-top" alt="مسؤول">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/1a1a65858e915e29001df.jpg" class="card-img-top" alt="يوغاشي">
                         <div class="card-body">
                             <h5 class="card-title">يوغاشي</h5>
                             <p class="card-text">الرتبة: ملك الشياطين</p>
                             <a href="https://wa.me/201067162156" class="btn btn-custom">تواصل</a>
                         </div>
-                        </div>
-                        <div class="card">
-                        <img src="https://graph.org/file/b8990896bdc12b87c8dc6.jpg" class="card-img-top" alt="مسؤول">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/b8990896bdc12b87c8dc6.jpg" class="card-img-top" alt="اوراهارا">
                         <div class="card-body">
                             <h5 class="card-title">اوراهارا</h5>
                             <p class="card-text">الرتبة: مستشار</p>
                             <a href="https://wa.me/218911656035" class="btn btn-custom">تواصل</a>
                         </div>
-                        </div>
-<div class="card">
-                        <img src="https://graph.org/file/055f371556b92ff34fadf.jpg" class="card-img-top" alt="مسؤول">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/055f371556b92ff34fadf.jpg" class="card-img-top" alt="سانجي">
                         <div class="card-body">
                             <h5 class="card-title">سانجي</h5>
                             <p class="card-text">الرتبة: وزير</p>
                             <a href="https://wa.me/201501270999" class="btn btn-custom">تواصل</a>
                         </div>
                     </div>
-<div class="card">
-                        <img src="https://graph.org/file/fc16471cb9e4caa3c9d96.jpg" class="card-img-top" alt="مسؤول">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/fc16471cb9e4caa3c9d96.jpg" class="card-img-top" alt="ايرين">
                         <div class="card-body">
                             <h5 class="card-title">ايرين</h5>
                             <p class="card-text">الرتبة: ادميرال</p>
                             <a href="https://wa.me/201033401721" class="btn btn-custom">تواصل</a>
                         </div>
                     </div>
-<div class="card">
-                        <img src="https://graph.org/file/9475208e0d303952ed13f.jpg" class="card-img-top" alt="مسؤول">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/9475208e0d303952ed13f.jpg" class="card-img-top" alt="غيومي">
                         <div class="card-body">
                             <h5 class="card-title">غيومي</h5>
                             <p class="card-text">الرتبة: دوق</p>
                             <a href="https://wa.me/201026560248" class="btn btn-custom">تواصل</a>
                         </div>
-</div>
-                </div>
-    <section id="titles" class="container-fluid background-4 text-center">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h4 class="card-title">القاب النقابة</h4>
-                <div class="card-deck">
-                    <div class="card text-white bg-dark mb-3">
-                        <img src="https://graph.org/file/9b6f1726f0ad2a4eaaf6a.jpg" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">الالقاب المستخدمة</h5>
-                            <a href="####" class="btn btn-custom">مشاهدة</a>
-                        </div>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section id="stars" class="container-fluid background-5 text-center">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h4 class="card-title">نجوم الاسبوع</h4>
-                <div class="card-deck">
-                    <div class="card text-white bg-dark mb-3">
+
+    <section id="titles" class="section bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">القاب النقابة</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <img src="https://graph.org/file/9b6f1726f0ad2a4eaaf6a.jpg" class="card-img-top" alt="الالقاب المستخدمة">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">الالقاب المستخدمة</h5>
+                            <a href="#" class="btn btn-custom">مشاهدة</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stars" class="section">
+        <div class="container">
+            <h2 class="text-center mb-5">نجوم الاسبوع</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-100">
                         <img src="https://graph.org/file/f236e28699a5134237f7b.jpg" class="card-img-top" alt="ميكاسا">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title">نجم الفعاليات - ميكاسا</h5>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark mb-3">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
                         <img src="https://graph.org/file/aa28a67137f296085e0e3.jpg" class="card-img-top" alt="هانكوك">
-                        <div class="card-body">
-                             <h5 class="card-title">نجم التفاعل - هانكوك</h5>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">نجم التفاعل - هانكوك</h5>
                         </div>
-                        <div class="card text-white bg-dark mb-3">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
                         <img src="https://graph.org/file/7d87e4c34314024d4d4d3.jpg" class="card-img-top" alt="سونغ">
-                        <div class="card-body">
-                             <h5 class="card-title">نجم التفاعل - سونغ</h5>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">نجم التفاعل - سونغ</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="links" class="container-fluid background-6 text-center">
-        <div class="card mb-4">
-            <div class="card-body">
-                <h4 class="card-title">فروع ڤالهالا</h4>
-                <div class="card-deck">
-                    <div class="card text-white bg-dark mb-3">
-                        <img src="https://graph.org/file/0d410582cc12a1a5c6065.jpg" class="card-img-top" alt="فرع 1">
-                        <div class="card-body">
+
+<section id="links" class="section bg-dark">
+        <div class="container">
+            <h2 class="text-center mb-5">فروع ڤالهالا</h2>
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/0d410582cc12a1a5c6065.jpg" class="card-img-top" alt="استقبال ڤالهالا">
+                        <div class="card-body text-center">
                             <h5 class="card-title">استقبال ڤالهالا</h5>
                             <a href="https://chat.whatsapp.com/EEOgf9BlR8KLONY7jD8TT5" class="btn btn-custom">انضم للمجموعة</a>
                         </div>
                     </div>
-                    <div class="card text-white bg-dark mb-3">
-                        <img src="https://graph.org/file/0c6c099174e21983a996b.jpg" class="card-img-top" alt="فرع 2">
-                        <div class="card-body">
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://graph.org/file/0c6c099174e21983a996b.jpg" class="card-img-top" alt="ستيكرات ڤالهالا">
+                        <div class="card-body text-center">
                             <h5 class="card-title">ستيكرات ڤالهالا</h5>
                             <a href="https://chat.whatsapp.com/HKH3H9vYltrEc7Amce07E8" class="btn btn-custom">انضم للمجموعة</a>
                         </div>
@@ -254,14 +284,14 @@
             </div>
         </div>
     </section>
-            </div>
-        </div>
-</section>
 
-    <div class="footer">
-       جميع الحقوق محفوظة  &copy; 2024 <a href="https://wa.me/201033401721" target="_blank">ＫΞＦＯ ┇♞</a>
-    </div>
-    
+    <footer class="footer text-center">
+        <div class="container">
+            <p>جميع الحقوق محفوظة &copy; 2024 <a href="https://wa.me/201033401721" target="_blank" class="text-warning">ＫΞＦＯ ┇♞</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function copyText() {
             var hiddenText = "*مرحبا بك في نقابة فالاهالا🔥*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*شرح للأستمارة*\n*اللقب:* ادخل اسم من شخصية انمي يكون لقبك داخل الجروب\n*الأنمي:* الأنمي يلي اخترت منه اللقب\n*من طرف:* من طرف مين دخلت الجروب او مين دخلك الجروب\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*❃ اللقب :『』➥*\n*❃ الانمي :『』➥*\n*❃ من طرف :『』➥*\n*❃ بنت او ولد :『』➥*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n*✦ الرجاء إلحاق صورة للقب مع تعبئة الإستمارة*\n*✦ ممنوع لقب من انمي (هينتاي - ايتشي) او خارج نطاق الانمي*\n*● • ━━── ─ ◞🔥◜ ─ ──━━ • ●*\n───── *..*\n*ادارة :*\n*『𝚅𝙰𝙻𝙷「🔥」𝙰𝙻𝙻𝙰』*";
@@ -271,9 +301,35 @@
                 alert("فشل في نسخ النص.");
             });
         }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to nav items when scrolling
+        window.addEventListener('scroll', () => {
+            let current = '';
+            document.querySelectorAll('section').forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - sectionHeight / 3) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(li => {
+                li.classList.remove('active');
+                if (li.classList.contains(current)) {
+                    li.classList.add('active');
+                }
+            });
+        });
     </script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
